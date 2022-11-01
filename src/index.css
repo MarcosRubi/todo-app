@@ -7,14 +7,16 @@
 --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
 --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
 --Text-Color: hsl(255,100%,100%);
+--Bright-Blue: hsl(220, 98%, 61%);
 }
 [data-theme="light"]{
---Background-Body: hsl(0, 0%, 98%);
---Background-Containers: hsl(236, 33%, 92%);
---Light-Grayish-Blue: hsl(233, 11%, 84%);
---Dark-Grayish-Blue: hsl(236, 9%, 61%);
---Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
---Text-Color: hsl(255, 0%, 0%);
+    --Background-Body: hsl(0, 0%, 98%);
+    --Background-Containers: hsl(236, 33%, 92%);
+    --Light-Grayish-Blue: hsl(233, 11%, 84%);
+    --Dark-Grayish-Blue: hsl(236, 9%, 61%);
+    --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+    --Text-Color: hsl(255, 0%, 0%);
+    --Bright-Blue: hsl(220, 98%, 61%);
 }
 
 
@@ -51,10 +53,10 @@ a {
 li{
     list-style: none;
     color: var(--Text-Color);
-    font-size: 1rem;
-    padding: 1rem;
+    font-size: .8rem;
     background-color: var(--Background-Containers);
     border-bottom: 1px solid var(--Very-Dark-Grayish-Blue);
+    cursor: pointer;
 }
 .container {
     width: 90%;
@@ -126,12 +128,52 @@ input[type="text"]{
     border-radius: .25rem;
     overflow: hidden;
 }
+.task-list li > div > *{
+    padding: 1rem;
+}
 .task-list .check::after{
     transform: translate(-.2rem ,-.80rem);
 }
-
+.task-list .check{
+    flex-basis: 2.5rem;
+    position: relative;
+}
+.task-list li.checked .check.checked::before{
+    content: '';
+    position: absolute;
+    transform: translate(.85rem ,.26rem);
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 1.55rem;
+    height: 1.55rem;
+    background: linear-gradient(120deg, hsl(192, 100%, 67%) , hsl(280, 87%, 65%));
+}
+.task-list li.checked .check.checked::after{
+    content: '';
+    background-image: url(./assets/icon-check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.task-list span{
+    transition: all 100ms;
+    flex-grow: 1;
+}
+.task-list li.checked span{
+    text-decoration: line-through;
+    color: var(--Dark-Grayish-Blue);
+}
 /* FOOTER */
 footer p{
     background-size: cover;
     color: var(--Dark-Grayish-Blue);
+}
+
+@media (min-width:768px) {
+    html[data-theme="light"]  body::after{
+        background-image: url(./assets/bg-desktop-light.jpg);
+    }
+    body::after{
+        background-image: url(./assets/bg-desktop-dark.jpg);
+    }
 }
