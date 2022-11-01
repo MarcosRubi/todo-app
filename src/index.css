@@ -24,18 +24,22 @@
     box-sizing: border-box;
 }
 
-a {
-    text-decoration: none;
+html[data-theme="light"]  body{
+    background-image: url(./assets/bg-mobile-light.jpg);
 }
 body {
     font-family: "Josefin Sans", sans-serif;
-    background-color: black;
     background-image: url(./assets/bg-mobile-dark.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-color: var(--Background-Body);
     font-size: 18px;
+    transition: all 300ms;
 }
+a {
+    text-decoration: none;
+}
+
 .container {
     width: 90%;
     max-width: 800px;
