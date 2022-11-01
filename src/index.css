@@ -1,3 +1,23 @@
+[data-theme="dark"]{
+--Background-Body: hsl(235, 21%, 11%);
+--Background-Containers: hsl(235, 24%, 19%);
+--Light-Grayish-Blue: hsl(234, 39%, 85%);
+--Light-Grayish-Blue-hover: hsl(236, 33%, 92%);
+--Dark-Grayish-Blue: hsl(234, 11%, 52%);
+--Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+--Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
+--Text-Color: hsl(255,100%,100%);
+}
+[data-theme="light"]{
+--Background-Body: hsl(0, 0%, 98%);
+--Background-Containers: hsl(236, 33%, 92%);
+--Light-Grayish-Blue: hsl(233, 11%, 84%);
+--Dark-Grayish-Blue: hsl(236, 9%, 61%);
+--Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+--Text-Color: hsl(255, 0%, 0%);
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +30,11 @@ a {
 body {
     font-family: "Josefin Sans", sans-serif;
     background-color: black;
+    background-image: url(./assets/bg-mobile-dark.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--Background-Body);
+    font-size: 18px;
 }
 .container {
     width: 90%;
@@ -38,11 +63,47 @@ header {
     letter-spacing: 3px;
     font-size: 1.5rem;
     font-weight: 700;
-    color: white;
+    color: White;
 }
 input[type="checkbox"] {
     appearance: none;
 }
 .input-group label{
     cursor: pointer;
+}
+
+/* FORM TASK */
+input[type="text"]{
+    background-color: var(--Background-Containers);
+    height: 50px;
+    width: 100%;
+    padding-left: 3.5rem;
+    border: none;
+    outline: none;
+    border-radius: .25rem;
+    color: var(--Text-Color);
+}
+.input-group{
+    position: relative;
+}
+.check::after{
+    content: '';
+    position: absolute;
+    transform: translate(.75rem ,-.80rem);
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid var(--Dark-Grayish-Blue);
+    border-radius: 100%;
+}
+::placeholder{
+    color: var(--Dark-Grayish-Blue);
+    font-size: 1em;
+}
+
+
+
+/* FOOTER */
+footer p{
+    background-size: cover;
+    color: var(--Dark-Grayish-Blue);
 }
