@@ -4,6 +4,7 @@ export const TaskContext = createContext();
 
 export function TaskContextProvider(props) {
     const [theme, setTheme] = useState(document.querySelector("html").dataset.theme);
+    const [tasks, setTasks] = useState([])
 
     useEffect(() => {
         if (theme === "dark") {
@@ -13,8 +14,12 @@ export function TaskContextProvider(props) {
         document.querySelector("html").setAttribute("data-theme", "light");
     }, [theme]);
 
+    function createTask(task){
+        setTasks([...tasks, task])
+    }
+
     return (
-        <TaskContext.Provider value={{ theme, setTheme }}>
+        <TaskContext.Provider value={{ theme, setTheme, createTask }}>
             {props.children}
         </TaskContext.Provider>
     );
