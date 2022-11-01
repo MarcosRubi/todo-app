@@ -1,12 +1,14 @@
-import './App.css'
+import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
-
-  return (
-    <main className="App">
-      <h1>Task List</h1>
-    </main>
-  )
+    return (
+        <main>
+            <Header/>
+            <Footer/>
+        </main>
+    );
 }
 
-export default App
+export default App;

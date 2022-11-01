@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+body {
+    font-family: "Josefin Sans", sans-serif;
+    background-color: black;
+}
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0rem auto;
+}
+.text-center {
+    text-align: center;
+}
+.d-flex {
+    display: flex;
+}
+.jc-between {
+    justify-content: space-between;
+}
+.align-center {
+    align-items: center;
+}
+
+/* HEADER */
+header {
+    padding: 2rem 0;
+}
+.logo {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+input[type="checkbox"] {
+    appearance: none;
+}
+.input-group label{
+    cursor: pointer;
+}
