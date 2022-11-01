@@ -19,7 +19,7 @@ export function TaskContextProvider(props) {
     }
 
     return (
-        <TaskContext.Provider value={{ theme, setTheme, createTask }}>
+        <TaskContext.Provider value={{ theme, setTheme, createTask, tasks }}>
             {props.children}
         </TaskContext.Provider>
     );

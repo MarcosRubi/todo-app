@@ -28,7 +28,7 @@ function Header() {
                         />
                         <label htmlFor="chkTheme">
                             <img
-                                src={theme === "light" ? iconSun : iconMoon}
+                                src={theme === "light" ? iconMoon : iconSun}
                                 alt="Change Theme"
                             />
                         </label>
