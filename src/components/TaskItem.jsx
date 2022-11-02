@@ -5,16 +5,14 @@ import { TaskContext } from "../context/TaskContext";
 function TaskItem({task}) {
     const { deleteTask, updateTask } = useContext(TaskContext);
 
-    function handleOnClick(e, id){
-        const li = e.target.parentNode.parentNode
-        li.classList.toggle('checked')
+    function handleOnClick(id){
         updateTask(id)
     }
 
     return (
-        <li key={task.id}>
+        <li key={task.id} className={task.completed ? 'checked' : ''}>
             <div className={`d-flex align-center jc-between`}>
-                <div className="d-flex align-center flex-grow" onClick={(e)=>{handleOnClick(e, task.id)}}>
+                <div className="d-flex align-center flex-grow" onClick={()=>{handleOnClick(task.id)}}>
                     <div className="check"></div>
                     <span>{task.task}</span>
                 </div>
