@@ -3,7 +3,7 @@ import { TaskContext } from "../context/TaskContext";
 import TaskItem from "./TaskItem";
 
 function TaskList() {
-    const { tasks, tasksToShow, setTasksToShow, listTasksActive } = useContext(TaskContext);
+    const { tasks, tasksToShow, setTasksToShow } = useContext(TaskContext);
     const tasksActive = tasks.filter((task) => task.completed === false)
     const tasksCompleted = tasks.filter((task) => task.completed !== false)
     let tasksFilter = tasks
@@ -24,7 +24,6 @@ function TaskList() {
     }
 
 
-
     return (
         <section className="task-list container">
             <ul>
@@ -34,7 +33,8 @@ function TaskList() {
             </ul>
             <div className="d-flex jc-between align-center options">
                 <span>{tasksActive.length} items left</span>
-                <button className="btn btn-secondary" onClick={listTasksActive}>Clear Completed</button>
+                {tasksToShow === 'All' ? <button className="btn btn-secondary" onClick={()=>{setTasksToShow('Active')}} >Clear Completed</button> : ''}
+                
             </div>
         </section>
     );

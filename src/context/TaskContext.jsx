@@ -36,9 +36,6 @@ export function TaskContextProvider(props) {
         });
         setTasks(newData);
     }
-    function listTasksActive(){
-        setTasksToShow('Active')
-    }
 
     return (
         <TaskContext.Provider
@@ -51,7 +48,7 @@ export function TaskContextProvider(props) {
                 updateTask,
                 tasksToShow,
                 setTasksToShow,
-                listTasksActive
+                tasksToShow
             }}
         >
             {props.children}

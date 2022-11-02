@@ -3,6 +3,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
+import TaskFilter from "./components/TaskFilter";
+
 
 function App() {
     return (
@@ -10,6 +12,7 @@ function App() {
             <Header />
             <TaskForm />
             <TaskList />
+            <TaskFilter/>
             <Footer />
         </>
     );

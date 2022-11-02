@@ -72,6 +72,9 @@ li{
 .jc-between {
     justify-content: space-between;
 }
+.jc-center{
+    justify-content: center;
+}
 .flex-grow{
     flex-grow: 1;
 }
@@ -80,13 +83,19 @@ li{
 }
 .btn{
     padding: .4rem 1rem;
-}
-.btn-secondary{
+    color: var(--Dark-Grayish-Blue);
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color: var(--Dark-Grayish-Blue);
     transition: all 300ms;
+    outline: none;
+}
+.btn-primary{
+    font-size: 1rem;
+}
+.btn-primary.active,
+.btn-primary:hover{
+    color: var(--Bright-Blue);
 }
 .btn-secondary:hover{
     color: var(--Light-Grayish-Blue-hover);
@@ -146,7 +155,7 @@ input[type="text"]{
 }
 .task-list .flex-grow > *,
 .task-list .delete{
-    padding: 1rem;
+    padding: .75rem;
 }
 .task-list .check::after{
     transform: translate(-.2rem ,-.80rem);
@@ -159,7 +168,7 @@ input[type="text"]{
 .task-list li.checked .check::before{
     content: '';
     position: absolute;
-    transform: translate(.85rem ,.26rem);
+    transform: translate(.57rem ,0rem);
     border-radius: 50%;
     top: 0;
     left: 0;
@@ -186,6 +195,12 @@ input[type="text"]{
     font-size: 0.8rem;
     padding: 1rem;
     background-color: var(--Background-Containers);
+}
+
+.filters{
+    background-color: var(--Background-Containers);
+    padding: .75rem;
+    border-radius: .25rem;
 }
 
 
