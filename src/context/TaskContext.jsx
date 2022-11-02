@@ -18,16 +18,36 @@ export function TaskContextProvider(props) {
     }, [theme]);
 
     function createTask(task) {
-        setIdTask((idTask + 1));
+        setIdTask(idTask + 1);
         setTasks([...tasks, { task, completed: false, id: idTask }]);
     }
     function deleteTask(taskID) {
         setTasks(tasks.filter((task) => task.id !== taskID));
     }
+    function updateTask(taskID) {
+        let newData = [];
+        tasks.map((task) => {
+            task.id === taskID
+                ? newData.push({
+                    task: task.task,
+                    completed: !task.completed,
+                    id: task.id,
+                })
+                : newData.push(task);
+        });
+        setTasks(newData);
+    }
 
     return (
         <TaskContext.Provider
-            value={{ theme, setTheme, createTask, tasks, deleteTask }}
+            value={{
+                theme,
+                setTheme,
+                createTask,
+                tasks,
+                deleteTask,
+                updateTask,
+            }}
         >
             {props.children}
         </TaskContext.Provider>
