@@ -4,11 +4,10 @@ export const TaskContext = createContext();
 
 export function TaskContextProvider(props) {
     let [idTask, setIdTask] = useState(1);
-    const [theme, setTheme] = useState(
-        document.querySelector("html").dataset.theme
-    );
+    const [theme, setTheme] = useState(document.querySelector("html").dataset.theme);
     const [tasks, setTasks] = useState([]);
-
+    const [tasksToShow, setTasksToShow] = useState('All')
+    
     useEffect(() => {
         if (theme === "dark") {
             document.querySelector("html").setAttribute("data-theme", "dark");
@@ -37,6 +36,9 @@ export function TaskContextProvider(props) {
         });
         setTasks(newData);
     }
+    function listTasksActive(){
+        setTasksToShow('Active')
+    }
 
     return (
         <TaskContext.Provider
@@ -47,6 +49,9 @@ export function TaskContextProvider(props) {
                 tasks,
                 deleteTask,
                 updateTask,
+                tasksToShow,
+                setTasksToShow,
+                listTasksActive
             }}
         >
             {props.children}

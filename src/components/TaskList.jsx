@@ -3,23 +3,38 @@ import { TaskContext } from "../context/TaskContext";
 import TaskItem from "./TaskItem";
 
 function TaskList() {
-    const { tasks } = useContext(TaskContext);
-    const taskLeft = tasks.filter((task) => task.completed === false)
+    const { tasks, tasksToShow, setTasksToShow, listTasksActive } = useContext(TaskContext);
+    const tasksActive = tasks.filter((task) => task.completed === false)
+    const tasksCompleted = tasks.filter((task) => task.completed !== false)
+    let tasksFilter = tasks
 
     if(tasks.length === 0){
         return;
     }
+    switch (tasksToShow) {
+        case 'Active':
+            tasksFilter = tasksActive
+            break;
+        case 'Completed':
+            tasksFilter = tasksCompleted
+            break;
+        default:
+            tasksFilter = tasks
+            break;
+    }
+
+
 
     return (
         <section className="task-list container">
             <ul>
-                {tasks.map((task) => {
+                {tasksFilter.map((task) => {
                     return <TaskItem task={task} key={task.id}/>;
                 })} 
             </ul>
             <div className="d-flex jc-between align-center options">
-                <span>{taskLeft.length} items left</span>
-                <span>Clear Completed</span>
+                <span>{tasksActive.length} items left</span>
+                <button className="btn btn-secondary" onClick={listTasksActive}>Clear Completed</button>
             </div>
         </section>
     );

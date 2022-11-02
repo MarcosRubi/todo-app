@@ -78,6 +78,19 @@ li{
 .align-center {
     align-items: center;
 }
+.btn{
+    padding: .4rem 1rem;
+}
+.btn-secondary{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--Dark-Grayish-Blue);
+    transition: all 300ms;
+}
+.btn-secondary:hover{
+    color: var(--Light-Grayish-Blue-hover);
+}
 
 /* HEADER */
 header {
