@@ -6,12 +6,12 @@ import TaskList from "./components/TaskList";
 
 function App() {
     return (
-        <main>
-            <Header/>
-            <TaskForm/>
-            <TaskList/>
-            <Footer/>
-        </main>
+        <>
+            <Header />
+            <TaskForm />
+            <TaskList />
+            <Footer />
+        </>
     );
 }
 

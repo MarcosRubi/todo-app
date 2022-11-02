@@ -12,9 +12,9 @@ function TaskList() {
     return (
         <section className="task-list container">
             <ul>
-                {tasks.map((task, id) => {
-                    return <TaskItem task={task} id={id} key={id}/>;
-                })}
+                {tasks.map((task) => {
+                    return <TaskItem task={task} key={task.id}/>;
+                })} 
             </ul>
         </section>
     );

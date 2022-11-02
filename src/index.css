@@ -72,6 +72,9 @@ li{
 .jc-between {
     justify-content: space-between;
 }
+.flex-grow{
+    flex-grow: 1;
+}
 .align-center {
     align-items: center;
 }
@@ -128,7 +131,8 @@ input[type="text"]{
     border-radius: .25rem;
     overflow: hidden;
 }
-.task-list li > div > *{
+.task-list .flex-grow > *,
+.task-list .delete{
     padding: 1rem;
 }
 .task-list .check::after{
@@ -138,7 +142,7 @@ input[type="text"]{
     flex-basis: 2.5rem;
     position: relative;
 }
-.task-list li.checked .check.checked::before{
+.task-list li.checked .check::before{
     content: '';
     position: absolute;
     transform: translate(.85rem ,.26rem);
@@ -149,7 +153,7 @@ input[type="text"]{
     height: 1.55rem;
     background: linear-gradient(120deg, hsl(192, 100%, 67%) , hsl(280, 87%, 65%));
 }
-.task-list li.checked .check.checked::after{
+.task-list li.checked .check::after{
     content: '';
     background-image: url(./assets/icon-check.svg);
     background-repeat: no-repeat;
@@ -157,7 +161,6 @@ input[type="text"]{
 }
 .task-list span{
     transition: all 100ms;
-    flex-grow: 1;
 }
 .task-list li.checked span{
     text-decoration: line-through;
@@ -170,6 +173,9 @@ footer p{
 }
 
 @media (min-width:768px) {
+    body{
+        margin: 3rem auto;
+    }
     html[data-theme="light"]  body::after{
         background-image: url(./assets/bg-desktop-light.jpg);
     }
