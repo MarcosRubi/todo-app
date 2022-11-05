@@ -11,7 +11,7 @@
 }
 [data-theme="light"]{
     --Background-Body: hsl(0, 0%, 98%);
-    --Background-Containers: hsl(236, 33%, 92%);
+    --Background-Containers: rgb(230, 232, 237);
     --Light-Grayish-Blue: hsl(233, 11%, 84%);
     --Dark-Grayish-Blue: hsl(236, 9%, 61%);
     --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
@@ -60,7 +60,7 @@ li{
 }
 .container {
     width: 90%;
-    max-width: 800px;
+    max-width: 550px;
     margin: 0rem auto;
 }
 .text-center {
@@ -93,9 +93,16 @@ li{
 .btn-primary{
     font-size: 1rem;
 }
-.btn-primary.active,
-.btn-primary:hover{
+.btn-primary.active{
     color: var(--Bright-Blue);
+}
+.btn-primary:hover{
+    color: var(--Text-Color);
+    text-shadow: 1px 1px 5px rgba(150, 150, 150, 1);
+}
+.btn-secondary{
+    text-align: end;
+    flex-basis:40%;
 }
 .btn-secondary:hover{
     color: var(--Light-Grayish-Blue-hover);
@@ -190,6 +197,14 @@ input[type="text"]{
     text-decoration: line-through;
     color: var(--Dark-Grayish-Blue);
 }
+.task-list .delete{
+    opacity: 0;
+    transition: all 100ms;
+}
+.task-list li:hover  .delete{
+    opacity: 1;
+}
+
 .options{
     color: var(--Dark-Grayish-Blue);
     font-size: 0.8rem;
@@ -224,4 +239,12 @@ footer p{
     body::after{
         background-image: url(./assets/bg-desktop-dark.jpg);
     }
+    .filters{
+        padding: 0;
+        flex-basis: 100%;
+    }
+    .task-list span{
+        flex-basis: 30%;
+    }
+    
 }

@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { TaskContext } from "../context/TaskContext";
 import TaskItem from "./TaskItem";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import TaskFilter from "./TaskFilter";
 
-function TaskList() {
+function TaskList({ width }) {
     const { tasks, setTasks, tasksToShow, setTasksToShow } = useContext(TaskContext);
     const tasksActive = tasks.filter((task) => task.completed === false);
     const tasksCompleted = tasks.filter((task) => task.completed !== false);
@@ -24,41 +25,33 @@ function TaskList() {
             break;
     }
 
-    const reorder = (list, startIndex, endIndex)=>{
-        const result = [...list]
-        const [removed] = result.splice(startIndex, 1)
-        result.splice(endIndex, 0, removed)
-        return result
-    }
+    const reorder = (list, startIndex, endIndex) => {
+        const result = [...list];
+        const [removed] = result.splice(startIndex, 1);
+        result.splice(endIndex, 0, removed);
+        return result;
+    };
 
     return (
         <section className="task-list container">
             <DragDropContext
                 onDragEnd={(result) => {
                     const { source, destination } = result;
-                    if(!destination || source.index === destination.index){return}
-                    setTasks(prevTasks => reorder(prevTasks, source.index, destination.index))
+                    if (!destination || source.index === destination.index) {
+                        return;
+                    }
+                    setTasks((prevTasks) =>
+                        reorder(prevTasks, source.index, destination.index)
+                    );
                 }}
             >
                 <Droppable droppableId="tasks">
                     {(droppableProvided) => (
-                        <ul
-                            {...droppableProvided.droppableProps}
-                            ref={droppableProvided.innerRef}
-                        >
+                        <ul {...droppableProvided.droppableProps} ref={droppableProvided.innerRef} >
                             {tasksFilter.map((task, index) => (
-                                <Draggable
-                                    key={task.id}
-                                    draggableId={task.id.toString()}
-                                    index={index}
-                                >
+                                <Draggable key={task.id} draggableId={task.id.toString()} index={index} >
                                     {(draggableProvided) => (
-                                        <TaskItem
-                                            task={task}
-                                            draggableProvided={
-                                                draggableProvided
-                                            }
-                                        />
+                                        <TaskItem task={task} draggableProvided={ draggableProvided } />
                                     )}
                                 </Draggable>
                             ))}
@@ -69,18 +62,8 @@ function TaskList() {
             </DragDropContext>
             <div className="d-flex jc-between align-center options">
                 <span>{tasksActive.length} items left</span>
-                {tasksToShow === "All" ? (
-                    <button
-                        className="btn btn-secondary"
-                        onClick={() => {
-                            setTasksToShow("Active");
-                        }}
-                    >
-                        Clear Completed
-                    </button>
-                ) : (
-                    ""
-                )}
+                {width > 767 ? <TaskFilter /> : ""}
+                <button className="btn btn-secondary" onClick={() => { setTasksToShow("Active"); }} > Clear Completed </button>
             </div>
         </section>
     );
