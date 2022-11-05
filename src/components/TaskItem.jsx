@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import iconDelete from "../assets/icon-cross.svg";
 import { TaskContext } from "../context/TaskContext";
 
-function TaskItem({task}) {
+function TaskItem({task, draggableProvided}) {
     const { deleteTask, updateTask } = useContext(TaskContext);
 
     function handleOnClick(id){
@@ -10,7 +10,7 @@ function TaskItem({task}) {
     }
 
     return (
-        <li key={task.id} className={task.completed ? 'checked' : ''}>
+        <li className={task.completed ? 'checked' : ''} {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps}>
             <div className={`d-flex align-center jc-between`}>
                 <div className="d-flex align-center flex-grow" onClick={()=>{handleOnClick(task.id)}}>
                     <div className="check"></div>

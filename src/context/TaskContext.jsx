@@ -44,9 +44,9 @@ export function TaskContextProvider(props) {
                 setTheme,
                 createTask,
                 tasks,
+                setTasks,
                 deleteTask,
                 updateTask,
-                tasksToShow,
                 setTasksToShow,
                 tasksToShow
             }}
